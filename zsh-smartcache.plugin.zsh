@@ -15,9 +15,8 @@ _smartcache-eval() {
             local output=$("$@")
             [[ $output == "$(<$cache)" ]] && return
             printf '%s' $output >| $cache
-            source $cache
             zcompile $cache
-            print "Cache updated: '$@' (applied next time)"
+            print "smartcache: '$@' updated (takes effect next launch)"
         } &!
     }
 }
@@ -31,7 +30,7 @@ _smartcache-comp() {
             local output=$("$@")
             [[ $output == "$(<$cache)" ]] && return
             printf '%s' $output >| $cache
-            print "Cache updated: '$@' (applied next time)"
+            print "smartcache: '$@' updated (takes effect next launch)"
         } &!
     }
     # fpath is set unique by default so it's OK to append multiple times.

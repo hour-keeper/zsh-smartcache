@@ -6,8 +6,8 @@ A Zsh plugin to cache command output to boost shell startup.
 
 It basically has the same functionality as [evalcache](https://github.com/mroth/evalcache), except that
 
-- It will automatically update the cache and inform you, while evalcache will never update the cache until you clear them. This operation is done in the background, so it has no effect on the satrtup time.
-- It also supports caching completions. (experimental)
+- It will automatically update the cache, compile it, then inform you, while evalcache will never update the cache until you clear them. This operation is done in the background, so it has no effect on the satrtup time.
+- It also supports caching completions.
 
 ## Benchmark
 
