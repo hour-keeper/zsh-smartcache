@@ -41,10 +41,9 @@ smartcache() {
     emulate -LR zsh -o extended_glob -o err_return
 
     # Doing these lately as users might change settings after plugin loading.
-    (( $+commands[base64] )) || base64 --help  # trigger error
     [[ -d $ZSH_SMARTCACHE_DIR ]] || mkdir -p $ZSH_SMARTCACHE_DIR
 
-    local subcmd=$1; shift
-    local id=${$(base64 <<< "$@")%%=#}
-    _smartcache-$subcmd $id "$@"
+    local -i hash=2166136261
+    for c in ${(s::)@:3}; (( hash = ((hash ^ #c) * 16777619) & 0xffffffff ))
+    _smartcache-$1 $2-$hash "${@:2}"
 }
