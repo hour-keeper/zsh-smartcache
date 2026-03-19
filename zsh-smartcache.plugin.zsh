@@ -45,5 +45,5 @@ smartcache() {
 
     local -i hash=2166136261
     for c in ${(s::)@:3}; (( hash = ((hash ^ #c) * 16777619) & 0xffffffff ))
-    _smartcache-$1 $2-$hash "${@:2}"
+    _smartcache-$1 $2-$(([##16]hash)) "${@:2}"
 }
